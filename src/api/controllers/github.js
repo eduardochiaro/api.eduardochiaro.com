@@ -1,10 +1,9 @@
-const axios = require('axios');
+import axios from 'axios';
 
 const base = 'https://api.github.com/users';
 const username = process.env.GITHUB_USERNAME;
 
-exports.getAll = (req, res) => {
-
+const getAll = (req, res) => {
   axios
     .get(`${base}/${username}/repos?sort=updated`)
     .catch((error) => {
@@ -25,5 +24,5 @@ exports.getAll = (req, res) => {
       }
       console.log(error.config)
     }).then(response => res.json({results: response.data}));
-
 }
+export default { getAll }

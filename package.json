@@ -4,9 +4,10 @@
   "description": "Api for eduardochiaro.com",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "forever --watch --watchDirectory ./api ./app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d dist && cp -R src/data dist/",
+    "start": "npm run build && node dist/app.js",
+    "restart": "rimraf dist && npm run start",
+    "dev": "nodemon --exec npm run restart"
   },
   "author": "",
   "license": "ISC",
@@ -15,9 +16,15 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.7"
   },
   "devDependencies": {
-    "forever": "^4.0.1"
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "forever": "^4.0.1",
+    "rimraf": "^2.7.1"
   }
 }
