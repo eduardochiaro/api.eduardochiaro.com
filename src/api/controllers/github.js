@@ -1,9 +1,12 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const base = 'https://api.github.com/users';
 const username = process.env.GITHUB_USERNAME;
 
 const getAll = (req, res) => {
+  console.log(`${base}/${username}/repos?sort=updated`);
   axios
     .get(`${base}/${username}/repos?sort=updated`)
     .catch((error) => {

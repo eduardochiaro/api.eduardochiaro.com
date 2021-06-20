@@ -4,7 +4,7 @@
   "description": "Api for eduardochiaro.com",
   "main": "app.js",
   "scripts": {
-    "build": "babel src -d dist && cp -R src/data dist/",
+    "build": "babel src -d dist",
     "start": "npm run build && node dist/app.js",
     "restart": "rimraf dist && npm run start",
     "dev": "nodemon --exec npm run restart"

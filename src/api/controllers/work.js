@@ -1,4 +1,4 @@
-import data from '../../data/jobs.json';
+import data from '../../../assets/data/jobs.json';
 
 const getAll = (req, res) => {
   res.json({results: data});
