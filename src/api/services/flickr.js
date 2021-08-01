@@ -1,14 +1,14 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { parseString } from 'xml2js';
 dotenv.config();
 
-const base = 'https://api.github.com/users';
-const username = process.env.GITHUB_USERNAME;
+const base = 'https://www.flickr.com/services';
+const username = process.env.FLICKR_USERNAME;
 
-const getAll = (req, res) => {
-  console.log(`${base}/${username}/repos?sort=updated`);
-  axios
-    .get(`${base}/${username}/repos?sort=updated`)
+const getPhotos = () => {
+ return axios
+    .get(`${base}/feeds/photos_public.gne?id=${username}`)
     .catch((error) => {
       if (error.response) {
         // The request was made and the server responded with a status code
@@ -26,6 +26,12 @@ const getAll = (req, res) => {
         console.log('Error', error.message)
       }
       console.log(error.config)
-    }).then(response => res.json({results: response.data}));
+    }).then(async (response) => {
+      var resultData = {};
+      await parseString(response.data, function (err, result) {
+        resultData = result;
+      });     
+      return resultData;
+    });
 }
-export default { getAll }
+export default { getPhotos }
