@@ -5,14 +5,20 @@ import work from './controllers/portfolio/work';
 import apps from './controllers/portfolio/apps';
 import github from './controllers/portfolio/github';
 import stream from './controllers/stream/stream';
+import { generateAccessToken } from './controllers/access/new';
 
 export default function(app) {
   app.get('/', (req, res) => {
     res.json({result: true});
   });
 
-  app.get('/portfolio/work', work.getAll);
-  app.get('/portfolio/apps', apps.getAll);
-  app.get('/portfolio/github', github.getAll);
-  app.get('/stream/latest', stream.getLastest);
+  app.get('/portfolio/work', auth, work.getAll);
+  app.get('/portfolio/apps', auth, apps.getAll);
+  app.get('/portfolio/github', auth, github.getAll);
+  app.get('/stream/latest', auth, stream.getLastest);
+
+  app.post('/access/new', (req, res) => {
+    const token = generateAccessToken({ username: req.body.username });
+    res.json(token);
+  });
 };
