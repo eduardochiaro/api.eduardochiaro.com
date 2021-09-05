@@ -5,9 +5,14 @@ dotenv.config();
 const base = 'https://api.github.com/users';
 const username = process.env.GITHUB_USERNAME;
 
+const 
+headers = {'Accept': 'application/vnd.github.mercy-preview+json'}
+
 const getAll = (req, res) => {
   axios
-    .get(`${base}/${username}/repos?sort=updated`)
+    .get(`${base}/${username}/repos?sort=updated`, {
+      headers
+    })
     .catch((error) => {
       if (error.response) {
         // The request was made and the server responded with a status code
