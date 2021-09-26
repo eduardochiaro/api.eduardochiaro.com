@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Node.js",
+    "type": "node",
+    "logo": "node.svg#icon",
+    "percentage": 75
+  },
+  {
+    "name": "HTML5",
+    "type": "html",
+    "logo": "html5.svg#icon",
+    "percentage": 100
+  },
+  {
+    "name": "CSS3",
+    "type": "css",
+    "logo": "css3.svg#icon",
+    "percentage": 90
+  },
+  {
+    "name": "PHP",
+    "type": "php",
+    "logo": "php.svg#icon",
+    "percentage": 90
+  },
+  {
+    "name": "MySQL",
+    "type": "mysql",
+    "logo": "mysql.svg#icon",
+    "percentage": 75
+  }
+]
