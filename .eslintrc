@@ -1,0 +1,24 @@
+{
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module",
+		"allowImportExportEverywhere": false,
+		"codeFrame": false
+	},
+	"extends": ["prettier", "plugin:node/recommended", "eslint:recommended"],
+	"env": {
+		"browser": true,
+		"jest": true
+	},
+	"rules": {
+		"max-len": ["error", {"code": 300}],
+		"prefer-promise-reject-errors": ["off"],
+		"no-return-assign": ["off"],
+    "no-console": "off",
+    "no-param-reassign": [2, { "props": false }],
+		"node/no-unsupported-features/es-syntax": [
+      "error",
+      { "ignores": ["modules"] },
+    ],
+	}
+}

@@ -1,6 +1,6 @@
 {
   "name": "api.eduardochiaro.com",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Api for eduardochiaro.com",
   "main": "app.js",
   "scripts": {
@@ -8,7 +8,9 @@
     "start": "npm run build && node dist/app.js",
     "restart": "rimraf dist && npm run start",
     "dev": "nodemon --exec npm run restart",
-    "prod": "node dist/app.js"
+    "prod": "node dist/app.js",
+    "prettier": "prettier --write src/ --ignore-unknown",
+    "lint": "eslint --fix src/"
   },
   "author": "",
   "license": "ISC",
@@ -28,7 +30,19 @@
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.5",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
     "forever": "^4.0.1",
+    "prettier": "^2.4.1",
     "rimraf": "^2.7.1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint",
+      "pretty-quick — staged",
+      "git add"
+    ]
   }
 }

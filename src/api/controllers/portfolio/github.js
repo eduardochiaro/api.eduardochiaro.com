@@ -1,35 +1,35 @@
-import axios from 'axios';
-import dotenv from 'dotenv';
+import axios from "axios";
+import dotenv from "dotenv";
 dotenv.config();
 
-const base = 'https://api.github.com/users';
+const base = "https://api.github.com/users";
 const username = process.env.GITHUB_USERNAME;
 
-const 
-headers = {'Accept': 'application/vnd.github.mercy-preview+json'}
+const headers = { Accept: "application/vnd.github.mercy-preview+json" };
 
 const getAll = (req, res) => {
   axios
     .get(`${base}/${username}/repos?sort=updated`, {
-      headers
+      headers,
     })
     .catch((error) => {
       if (error.response) {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
-        console.log(error.response.data)
-        console.log(error.response.status)
-        console.log(error.response.headers)
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
       } else if (error.request) {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
-        console.log(error.request)
+        console.log(error.request);
       } else {
         // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message)
+        console.log("Error", error.message);
       }
-      console.log(error.config)
-    }).then(response => res.json({results: response.data}));
-}
-export default { getAll }
+      console.log(error.config);
+    })
+    .then((response) => res.json({ results: response.data }));
+};
+export default { getAll };

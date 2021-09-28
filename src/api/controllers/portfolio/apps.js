@@ -1,6 +1,6 @@
-import data from '../../../../assets/data/apps.json';
+import data from "../../../../assets/data/apps.json";
 
 const getAll = (req, res) => {
-  res.json({results: data});
-}
-export default { getAll }
+  res.json({ results: data });
+};
+export default { getAll };
