@@ -15,18 +15,24 @@
     "name": "CSS3",
     "type": "css",
     "logo": "css3.svg#icon",
-    "percentage": 90
+    "percentage": 85
   },
   {
     "name": "PHP",
     "type": "php",
     "logo": "php.svg#icon",
-    "percentage": 90
+    "percentage": 95
   },
   {
     "name": "MySQL",
     "type": "mysql",
     "logo": "mysql.svg#icon",
     "percentage": 75
+  },
+  {
+    "name": "AWS",
+    "type": "aws",
+    "logo": "aws.svg#icon",
+    "percentage": 70
   }
 ]
