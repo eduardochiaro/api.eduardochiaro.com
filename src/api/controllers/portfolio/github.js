@@ -1,5 +1,6 @@
 import axios from "axios";
 import dotenv from "dotenv";
+import { setupCache } from 'axios-cache-adapter'
 dotenv.config();
 
 const base = "https://api.github.com/users";
@@ -7,9 +8,18 @@ const username = process.env.GITHUB_USERNAME;
 
 const headers = { Accept: "application/vnd.github.mercy-preview+json" };
 
+// Create `axios-cache-adapter` instance
+const cache = setupCache({
+  maxAge: 15 * 60 * 1000
+})
+
+// Create `axios` instance passing the newly created `cache.adapter`
+const api = axios.create({
+  adapter: cache.adapter
+})
+
 const getAll = (req, res) => {
-  axios
-    .get(`${base}/${username}/repos?sort=updated`, {
+  api(`${base}/${username}/repos?sort=updated`, {
       headers,
     })
     .catch((error) => {
